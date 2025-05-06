@@ -1,4 +1,4 @@
-import { useFetchMeal } from "./api/mealDB"
+import { FetchMeal } from "./api/mealDB"
 import {
   Card,
   CardContent,
@@ -10,24 +10,34 @@ import {
 function App() {
 
   // Call custom hook to fetch all meal.
-  useFetchMeal()
+  const { meal, isLoading, query } = FetchMeal()
 
   return (
-    <>
-      <div className='bg-blue-300'>test</div>
-      <div>
-        <Card className="w-[350px]">
-          <CardHeader>
-            <CardTitle>Create project</CardTitle>
-            <CardDescription>Deploy your new project in one-click.</CardDescription>
-          </CardHeader>
-          <CardContent>
-          </CardContent>
-          <CardFooter className="flex justify-between">
-          </CardFooter>
-        </Card>
+    <div className="px-[15%]">
+      <div className="grid grid-cols-3 gap-4">
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : meal?.length > 0 ? (
+          meal.map((item) => (
+            <Card key={item.idMeal}>
+              <CardHeader>
+                <CardTitle>{item.strMeal}</CardTitle>
+                <CardDescription>{item.strCategory}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <img
+                  src={item.strMealThumb}
+                  alt={item.strMeal}
+                  className="w-full h-auto rounded"
+                />
+              </CardContent>
+            </Card>
+          ))
+        ) : (
+          <p>No meals found.</p>
+        )}
       </div>
-    </>
+    </div>
   )
 }
 

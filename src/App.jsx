@@ -1,4 +1,4 @@
-import { useFetchMeal } from "./api/mealDB"
+import { FetchMeal } from "./api/mealDB"
 import {
   Card,
   CardContent,
@@ -10,7 +10,7 @@ import {
 function App() {
 
   // Call custom hook to fetch all meal.
-  const { meal, isLoading, query } = useFetchMeal()
+  useFetchMeal()
 
   return (
     <div className="px-[15%]">

@@ -12,7 +12,7 @@ export function ListOfCategory() {
     const data = await res.json()
     setCategories(data.meals)
     setIsLoading(false)
-    console.log(data.meals)
+    // console.log(data.meals)
   }
 
   // Call this first when FetchMeal is called. 

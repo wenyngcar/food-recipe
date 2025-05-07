@@ -16,7 +16,7 @@ export default function FoodDetails() {
   return (
     <div className="space-y-10 py-[4%]">
       {/* Header Nav */}
-        <div className=" py-4 px-6 mb-2 border-a border-gray-50">
+        <div className=" py-4 px-6 mb- border-a border-gray-50">
           <Link
             to="/"
             className="text-green-600 hover:text-green-800 font-medium text-lg transition"

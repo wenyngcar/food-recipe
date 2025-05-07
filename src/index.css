@@ -119,6 +119,9 @@
   }
 }
 
+body {
+  background-color:#FBFAF2;
+}
 
 :root {
   --neonGreen: #39FF14; 

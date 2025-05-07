@@ -118,3 +118,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+:root {
+  --neonGreen: #39FF14; 
+}
+
+@layer components {
+  .hover\:border-neonGreen:hover {
+    border-color: var(--neonGreen);
+  }
+
+  .hover\:shadow-neonGreen:hover {
+    box-shadow: 0 0 8px 2px var(--neonGreen);  
+  }
+}

@@ -1,11 +1,11 @@
-import Meals from "./components/Meals"
 import Header from "./components/Header"
+import SearchBar from "./components/SearchBar"
 
 function App() {
   return (
     <div>
       <Header />
-      <Meals />
+      <SearchBar />
     </div>
   )
 }

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 
-export function FetchMeal() {
+export function FetchMeal(mealName: string) {
   const apiUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s="
 
   const [isLoading, setIsLoading] = useState(false)
   const [query, setQuery] = useState("")
   const [meal, setMeal] = useState([])
+
 
   const searchRecipes = async () => {
     setIsLoading(true)
@@ -14,16 +15,20 @@ export function FetchMeal() {
     const data = await res.json()
     setMeal(data.meals)
     setIsLoading(false)
-    console.log(data.meals)
+    // console.log(data.meals)
   }
 
-
-  // Call Function on useEffect.
+  // Call this first when FetchMeal is called. 
   useEffect(() => {
-    searchRecipes()
-  }, [])
+    // If there is input string.
+    if (mealName) {
+      setQuery(mealName)
+    }
 
-  return { meal, isLoading, query }
+    searchRecipes()
+  }, [mealName])
+
+  return { meal, isLoading }
 }
 
 

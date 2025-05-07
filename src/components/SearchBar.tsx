@@ -13,7 +13,7 @@ export default function SearchBar() {
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             type="text"
-            className="border-2 border-gray-200 p-2 px-6 w-full rounded-2xl transition ease-in-out duration-300 placeholder:text-gray-400 text-gray-800 hover:border-l-4 hover:border-r-4 hover:border-neonGreen hover:shadow-[0_0_8px_2px_#39FF14] focus:ring-4 focus:ring-green-500 focus:ring-opacity-50"
+            className="border-2 border-gray-300 p-2 px-6 w-full rounded-2xl transition ease-in-out duration-300 placeholder:text-gray-400 text-gray-800 hover:border-l-4 hover:border-r-4 hover:border-neonGreen hover:shadow-[0_0_8px_2px_#39FF14] focus:ring-4 focus:ring-green-500 focus:ring-opacity-50"
             placeholder="Search..."
           />
         </div>

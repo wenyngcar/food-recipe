@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import mealDetails from "@/api/mealDetails";
 import { CheckCircle } from "lucide-react";
+import { House } from 'lucide-react';
 
 export default function FoodDetails() {
   const { mealId } = useParams();
@@ -8,24 +9,39 @@ export default function FoodDetails() {
 
   if (isLoading) return <p>Loading...</p>;
 
-  // Split instructions into individual sentences
   const instructions = meal["strInstructions"]
-    ?.split(/(?<=\.)\s+/) // Split after periods
+    ?.split(/(?<=\.)\s+/)
     .filter((step) => step.trim().length > 0);
 
   return (
     <div className="space-y-10 py-[4%]">
+      {/* Header Nav */}
+        <div className=" py-4 px-6 mb-2 border-a border-gray-50">
+          <Link
+            to="/"
+            className="text-green-600 hover:text-green-800 font-medium text-lg transition"
+          >
+          <House />
+          </Link>
+      </div>
+
+
+
       {/* Meal Name */}
       <div className="space-y-3">
         <p className="text-5xl font-semibold">{meal["strMeal"]}</p>
         <div className="flex space-x-2">
-          <p className="bg-slate-700 text-white px-3 py-[2px] rounded-full text-sm">{meal["strArea"]}</p>
-          <p className="bg-slate-700 text-white px-3 py-[2px] rounded-full text-sm">{meal["strCategory"]}</p>
+          <p className="bg-slate-700 text-white px-3 py-[2px] rounded-full text-sm">
+            {meal["strArea"]}
+          </p>
+          <p className="bg-slate-700 text-white px-3 py-[2px] rounded-full text-sm">
+            {meal["strCategory"]}
+          </p>
         </div>
       </div>
 
       {/* Meal Image and Ingredients */}
-      <div className="flex space-x-10">
+      <div className="flex space-x-10 flex-wrap">
         <div className="h-125">
           <img src={meal["strMealThumb"]} className="rounded-2xl h-full" />
         </div>

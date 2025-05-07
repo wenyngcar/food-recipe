@@ -16,13 +16,13 @@ export default function FoodDetails() {
   return (
     <div className="space-y-10 py-[4%]">
       {/* Header Nav */}
-        <div className=" py-4 px-6 mb- border-a border-gray-50">
-          <Link
-            to="/"
-            className="text-green-600 hover:text-green-800 font-medium text-lg transition"
-          >
+      <div className=" py-4 px-6 mb- border-a border-gray-50">
+        <Link
+          to="/"
+          className="text-green-600 hover:text-green-800 font-medium text-lg transition"
+        >
           <House />
-          </Link>
+        </Link>
       </div>
 
 
@@ -70,10 +70,12 @@ export default function FoodDetails() {
           <ul className="space-y-3">
             {instructions?.map((step, idx) => (
               <li key={idx} className="flex items-start space-x-3">
-                <CheckCircle
-                  className="text-green-500 mt-1 hover:text-green-600 transition-all duration-200 transform hover:scale-125"
-                  size={20}
-                />
+                <div>
+                  <CheckCircle
+                    className="text-green-500 mt-1 hover:text-green-600 transition-all duration-200 transform hover:scale-125"
+                    size={20}
+                  />
+                </div>
                 <p className="text-gray-800">{step}</p>
               </li>
             ))}

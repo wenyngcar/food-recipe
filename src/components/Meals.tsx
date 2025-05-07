@@ -7,9 +7,9 @@ import {
   CardTitle,
 } from "./ui/card"
 
-export default function Meals() {
-  // Call custom hook to fetch all meal.
-  const { meal, isLoading, query } = FetchMeal()
+export default function Meals({ mealName }: { mealName: string }) {
+  // Fetch Meal data here. 
+  const { meal, isLoading } = FetchMeal(mealName)
 
   return (
 

@@ -12,7 +12,7 @@ export function FetchMeal(mealName: string) {
     const data = await res.json()
     setMeal(data.meals)
     setIsLoading(false)
-    console.log(data.meals)
+    // console.log(data.meals)
   }
 
   // Call this first when FetchMeal is called. 

@@ -10,13 +10,14 @@ export default function FoodDetails() {
   if (isLoading) return <p>Loading...</p>;
 
   const instructions = meal["strInstructions"]
-    ?.split(/(?<=\.)\s+/)
-    .filter((step) => step.trim().length > 0);
+    ?.split(/(?<=\.(?![a-z]))\s+(?=[A-Z])/g) 
+    .filter((step) => step.trim().length > 0)
+    .map((step) => step.trim()); 
 
   return (
     <div className="space-y-10 py-[4%]">
       {/* Header Nav */}
-      <div className=" py-4 px-6 mb- border-a border-gray-50">
+      <div className="py-4 px-6 mb- border-a border-gray-50">
         <Link
           to="/"
           className="text-green-600 hover:text-green-800 font-medium text-lg transition"
@@ -24,8 +25,6 @@ export default function FoodDetails() {
           <House />
         </Link>
       </div>
-
-
 
       {/* Meal Name */}
       <div className="space-y-3">
@@ -47,7 +46,7 @@ export default function FoodDetails() {
         </div>
         <div className="md:w-1/2 space-y-5">
           <p className="text-4xl font-semibold">Ingredients</p>
-          <div className="bg-yellow-50 p-4 rounded-xl shadow-inner border-l-4 border-yellow-400">
+          <div className="bg-yellow-50 p-4 rounded-xl shadow-inner border-l-4 border-yellow-200">
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 list-disc list-inside text-gray-800">
               {Array.from({ length: 20 }, (_, i) => {
                 const ingredient = meal[`strIngredient${i + 1}`];
@@ -68,17 +67,31 @@ export default function FoodDetails() {
         <p className="text-4xl font-semibold">Instructions</p>
         <div className="bg-yellow-50 p-8 rounded-xl shadow-inner border-4 border-yellow-100 hover:border-yellow-400 transition-colors duration-300">
           <ul className="space-y-3">
-            {instructions?.map((step, idx) => (
-              <li key={idx} className="flex items-start space-x-3">
-                <div>
-                  <CheckCircle
-                    className="text-green-500 mt-1 hover:text-green-600 transition-all duration-200 transform hover:scale-125"
-                    size={20}
-                  />
-                </div>
-                <p className="text-gray-800">{step}</p>
-              </li>
-            ))}
+            {instructions?.map((step, idx) => {
+              const hasNumber = /^\d+\./.test(step);
+              let trimmedStep = step;
+
+              if (hasNumber) {
+                trimmedStep = step.replace(/^\d+\.\s*/, "").trim(); 
+              }
+
+              if (!trimmedStep) {
+                return null;
+              }
+
+              return (
+                <li key={idx} className="flex items-start space-x-3">
+                  {/* Enclosed checkbox with fixed size */}
+                  <div className="flex items-center justify-center w-6 h-6">
+                    <CheckCircle
+                      className="text-green-500 hover:text-green-600 transition-all duration-200 transform hover:scale-125"
+                      size={20}
+                    />
+                  </div>
+                  <p className="text-gray-800">{trimmedStep}</p>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

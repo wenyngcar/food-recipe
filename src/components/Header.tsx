@@ -29,7 +29,7 @@ export default function Header() {
             <p>Category</p>
             <div className="absolute bg-slate-100 rounded group-hover/category:opacity-100 opacity-0 transition ease-in-out duration-300">
               {categories.map((meal, key) => (
-                <Link to={`/home/${meal["strCategory"]}`}>
+                <Link to={`/home/${meal["strCategory"]}`} key={key}>
                   <p className="cursor-pointer hover:bg-gray-300 p-2 transition ease-in-out duration-300" key={key}>{meal["strCategory"]}</p>
                 </Link>
               ))}
@@ -37,8 +37,7 @@ export default function Header() {
           </div>
         </div>
       </header>
-
-      <main className="px-[15%]">
+      <main className="px-[15%]" >
         <Outlet />
       </main>
     </>

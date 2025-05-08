@@ -10,9 +10,9 @@ export default function FoodDetails() {
   if (isLoading) return <p>Loading...</p>;
 
   const instructions = meal["strInstructions"]
-    ?.split(/(?<=\.(?![a-z]))\s+(?=[A-Z])/g) 
+    ?.split(/(?<=\.(?![a-z]))\s+(?=[A-Z])/g)
     .filter((step) => step.trim().length > 0)
-    .map((step) => step.trim()); 
+    .map((step) => step.trim());
 
   return (
     <div className="space-y-10 py-[4%]">
@@ -72,7 +72,7 @@ export default function FoodDetails() {
               let trimmedStep = step;
 
               if (hasNumber) {
-                trimmedStep = step.replace(/^\d+\.\s*/, "").trim(); 
+                trimmedStep = step.replace(/^\d+\.\s*/, "").trim();
               }
 
               if (!trimmedStep) {

@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react"
 
-export default function mealDetails(id: string) {
-  const apiUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
+export function ListOfCategory() {
+  const apiUrl = "https://www.themealdb.com/api/json/v1/1/list.php?c=list"
+
   const [isLoading, setIsLoading] = useState(false)
-  const [meal, setMeal] = useState([])
+  const [categories, setCategories] = useState([])
 
   const searchRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(apiUrl + id)
+    const res = await fetch(apiUrl)
     const data = await res.json()
-    setMeal(data.meals[0])
+    setCategories(data.meals)
     setIsLoading(false)
-    console.log(data.meals[0])
+    console.log(data.meals)
   }
 
   // Call this first when FetchMeal is called. 
@@ -19,6 +20,5 @@ export default function mealDetails(id: string) {
     searchRecipes()
   }, [])
 
-  return { meal, isLoading }
-
+  return { categories, isLoading }
 }

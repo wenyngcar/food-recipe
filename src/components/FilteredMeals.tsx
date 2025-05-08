@@ -16,15 +16,14 @@ export default function FilteredMeals() {
   const { meal, isLoading } = FilterByCategory(category)
 
   return (
-
     <div className="py-[2%]">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-5 gap-4">
         {isLoading ? (
           <p>Loading...</p>
         ) : meal?.length > 0 ? (
           meal.map((item) => (
             <Link to={`/food-details/${item.idMeal}`} key={item.idMeal}>
-              <Card>
+              <Card className="border-2 border-gray-200 rounded-2xl transition duration-300 hover:shadow-[0_0_12px_4px_#39FF14] hover:scale-105 h-full">
                 <CardHeader>
                   <CardTitle>{item.strMeal}</CardTitle>
                   <CardDescription>{item.strCategory}</CardDescription>
@@ -44,5 +43,5 @@ export default function FilteredMeals() {
         )}
       </div>
     </div>
-  )
+  );
 }

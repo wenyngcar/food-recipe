@@ -20,7 +20,7 @@ export default function Meals({ mealName }: { mealName: string }) {
         ) : meal?.length > 0 ? (
           meal.map((item) => (
             <Link to={`/food-details/${item.idMeal}`} key={item.idMeal}>
-              <Card className="border-2 border-gray-200 rounded-2xl transition duration-300 hover:shadow-[0_0_12px_4px_#39FF14] hover:scale-105">
+              <Card className="border-2 border-gray-200 rounded-2xl transition duration-300 hover:scale-105">
                 <CardHeader>
                   <CardTitle>{item.strMeal}</CardTitle>
                   <CardDescription>{item.strCategory}</CardDescription>

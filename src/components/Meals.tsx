@@ -13,14 +13,14 @@ export default function Meals({ mealName }: { mealName: string }) {
   const { meal, isLoading } = FetchMeal(mealName);
 
   return (
-    <div className="py-[2%]">
-      <div className="grid grid-cols-5 gap-4">
+    <div className="py-[2%] h-[1450px]">
+      <div className="mt-10 grid grid-cols-5 gap-x-4 gap-y-9">
         {isLoading ? (
           <p>Loading...</p>
         ) : meal?.length > 0 ? (
           meal.map((item) => (
             <Link to={`/food-details/${item.idMeal}`} key={item.idMeal}>
-            <Card className="border-2 border-gray-200 rounded-2xl transition duration-300 hover:shadow-[0_0_12px_4px_#39FF14] hover:scale-105">
+              <Card className="border-2 border-gray-200 rounded-2xl transition duration-300 hover:shadow-[0_0_12px_4px_#39FF14] hover:scale-105">
                 <CardHeader>
                   <CardTitle>{item.strMeal}</CardTitle>
                   <CardDescription>{item.strCategory}</CardDescription>

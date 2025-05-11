@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Header from './components/Header.tsx'
-import App from './App.jsx'
+import App from './routes/App.jsx'
 import FoodDetails from './routes/FoodDetails.tsx'
 import FilteredMeals from './components/FilteredMeals.tsx'
 

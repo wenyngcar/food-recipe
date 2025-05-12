@@ -1,4 +1,4 @@
-import { FilterByCategory } from "@/api/filterByCategory";
+import { Filter } from "@/api/filter";
 import {
   Card,
   CardContent,
@@ -10,9 +10,9 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 export default function Meals() {
-  const { category } = useParams()
+  const { filter, query } = useParams()
   // Fetch Meal data here. 
-  const { meal, isLoading } = FilterByCategory(category)
+  const { meal, isLoading } = Filter(filter, query)
 
   return (
     <div className="py-[2%] h-[1450px]">

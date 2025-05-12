@@ -1,7 +1,9 @@
-import { ListOfCategory } from "@/api/listOfCategory"
+import { FilterList } from "@/api/listOfCategory"
 import { Link, Outlet } from "react-router-dom"
 export default function Header() {
-  const { categories } = ListOfCategory()
+  const { list: categories } = FilterList("c")
+  const { list: area } = FilterList("a")
+
   return (
     <>
       <header className="sticky top-0 bg-linear-to-b from-black from-40% py-6 px-[10%] flex items-center justify-between">
@@ -28,8 +30,18 @@ export default function Header() {
             <p>Category</p>
             <div className="absolute bg-gray-900 rounded group-hover/category:opacity-100 group-hover/category:pointer-events-auto opacity-0 pointer-events-none transition ease-in-out duration-300">
               {categories.map((meal, key) => (
-                <Link to={`/home/${meal["strCategory"]}`} key={key}>
+                <Link to={`/home/c/${meal["strCategory"]}`} key={key}>
                   <p className="hover:bg-[#FF9058] p-2 transition ease-in-out duration-300" key={key}>{meal["strCategory"]}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="relative group/category cursor-pointer">
+            <p>Area</p>
+            <div className="h-[615px] overflow-auto absolute bg-gray-900 rounded group-hover/category:opacity-100 group-hover/category:pointer-events-auto opacity-0 pointer-events-none transition ease-in-out duration-300">
+              {area.map((meal, key) => (
+                <Link to={`/home/a/${meal["strArea"]}`} key={key}>
+                  <p className="hover:bg-[#FF9058] p-2 transition ease-in-out duration-300" key={key}>{meal["strArea"]}</p>
                 </Link>
               ))}
             </div>

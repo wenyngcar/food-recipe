@@ -1,12 +1,12 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import mealDetails from "@/api/mealDetails";
 import { CheckCircle } from "lucide-react";
-// import { House } from 'lucide-react';
-import { useEffect } from "react";
+import { LucideArrowLeft } from "lucide-react";
 
 export default function FoodDetails() {
   const { mealId } = useParams();
   const { meal, isLoading } = mealDetails(mealId);
+  const navigate = useNavigate()
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -31,6 +31,9 @@ export default function FoodDetails() {
 
       {/* Meal Name */}
       <div className="space-y-1">
+        <button onClick={() => navigate(-1)} className="cursor-pointer">
+          <LucideArrowLeft />
+        </button>
         <p className="text-3xl font-semibold">{meal["strMeal"]}</p>
         <div className="flex space-x-2">
           <p className="bg-slate-700 text-white px-3 py-[2px] rounded-full text-sm">

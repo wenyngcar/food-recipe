@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 
-export function FilterByCategory(category: string) {
-  const apiUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c="
+export function Filter(filter: string, query: string) {
+  const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?${filter}=${query}`
 
   const [isLoading, setIsLoading] = useState(false)
   const [meal, setMeal] = useState([])
 
   const searchRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(apiUrl + category)
+    const res = await fetch(apiUrl)
     const data = await res.json()
     setMeal(data.meals)
     setIsLoading(false)
@@ -18,7 +18,7 @@ export function FilterByCategory(category: string) {
   // Call this first when FetchMeal is called. 
   useEffect(() => {
     searchRecipes()
-  }, [category])
+  }, [query])
 
   return { meal, isLoading }
 }

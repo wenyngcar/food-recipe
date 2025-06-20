@@ -8,18 +8,9 @@ export default function Header() {
     <>
       <header className="sticky top-0 bg-linear-to-b from-black from-40% py-6 px-[10%] flex items-center justify-between">
         <div className="flex items-center space-x-6">
-          <div className="w-20 h-20 rounded-full flex items-center justify-center transition duration-300 hover:shadow-[0_0_30px_15px_rgba(255,255,255,0.8)]">
-            <Link
-              to="/home"
-              className="text-white text-5xl font-semibold font-serif hover:shadow-white transition"
-            >
-              <img
-                src="/src/assets/Logo.png"
-                alt="Thinking Vegetable Logo"
-                className="w-20 h-20 object-contain"
-              />
-            </Link>
-          </div>
+          <Link to="/home" className="text-white text-5xl font-semibold font-serif hover:shadow-white transition" >
+            Undecided
+          </Link>
         </div>
 
         <div className="flex space-x-10 text-lg text-white font-ligt">
